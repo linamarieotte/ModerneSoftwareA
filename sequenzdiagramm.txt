@@ -1,0 +1,17 @@
+title SPIEL
+actor Client
+participant Server
+Client->Server:POST: neues Spiel\n
+Client<--Server: GAME_ID
+loop
+Client->Server: POST: Laufe einen Schritt
+alt Erfolgreich
+Server->Client:Gibt Status "Sucess" zurück
+else Spiel beendet
+Server->Client:Gibt Status "Failed" zurück
+else Wand
+Server->Client:Gibt Status "Wall" zurück
+else Standort
+Server->Client:Gibt Status "Position" zurück
+end
+end
